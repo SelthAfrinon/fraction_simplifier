@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : Fraction Simplifier
 // Author      : Martin Rivera
-// Version     : 0.1
+// Version     : 1
 // Description : Takes in fraction numerator and denominator, finds GCD between them,
 //					divides numerator and denominator by GCD.
 //============================================================================
@@ -9,15 +9,15 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-//#define num 10
-//#define den 1010
 
 using namespace std;
 
+
+// Prototype GCD function
 int find_gcd(int x, int y);
 
 int main(int argc, char *argv[]) {
-	int num = 0, den = 0;
+	int num = 0, den = 0;				// sorts inputs.
 	for(int i = 0; i < argc; i++){
 		if(std::string(argv[i]) == "-num"){
 			string temp = std::string(argv[i+1]);
@@ -30,11 +30,15 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
-	int common = find_gcd(num,den);
-	cout << num << "/" << den << " simplified is " << num/common << "/" << den/common << ".";
+	int common = find_gcd(num,den);		// calculate GCD between numerator and denominator.
+	cout << num << "/" << den			// prints simplified function to screen.
+			<< " simplified is "
+			<< num/common << "/"
+			<< den/common << ".";
 	return 0;
 }
 
+// Function to find GCD.
 int find_gcd(int x, int y){
 	int high, low;
 	if(x > y){
